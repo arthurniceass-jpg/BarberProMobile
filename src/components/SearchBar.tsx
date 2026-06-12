@@ -1,0 +1,46 @@
+import React, { memo } from 'react';
+import { View, TextInput, StyleSheet } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { colors } from '../theme/colors';
+import { borderRadius, spacing } from '../theme/spacing';
+
+interface SearchBarProps {
+  value: string;
+  onChangeText: (text: string) => void;
+  placeholder?: string;
+}
+
+export const SearchBar = memo(({ value, onChangeText, placeholder = 'Buscar barbearia...' }: SearchBarProps) => (
+  <View style={styles.container}>
+    <Ionicons name="search-outline" size={20} color={colors.textMuted} />
+    <TextInput
+      style={styles.input}
+      value={value}
+      onChangeText={onChangeText}
+      placeholder={placeholder}
+      placeholderTextColor={colors.textMuted}
+    />
+    {value.length > 0 && (
+      <Ionicons name="close-circle" size={20} color={colors.textMuted} onPress={() => onChangeText('')} />
+    )}
+  </View>
+));
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: colors.surface,
+    borderRadius: borderRadius.md,
+    paddingHorizontal: spacing.lg,
+    paddingVertical: spacing.md,
+    gap: spacing.sm,
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  input: {
+    flex: 1,
+    color: colors.textPrimary,
+    fontSize: 16,
+  },
+});
