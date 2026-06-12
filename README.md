@@ -68,7 +68,7 @@ _Adicionar screenshots do app em funcionamento_
 ## Autor
 
 - **Nome**: Arthur
-- **Matrícula**: _Preencher matrícula_
+- **Matrícula**: 01816200
 - **Disciplina**: Desenvolvimento para Dispositivos Móveis — 2026.1
 - **Instituição**: Centro Universitário Maurício de Nassau (UNINASSAU)
 - **Professor**: Prof. Dr. Diogo Francisco Borba Rodrigues
