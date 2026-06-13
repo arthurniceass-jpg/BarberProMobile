@@ -4,7 +4,7 @@ export const barbershops: Barbershop[] = [
   {
     id: '1',
     name: 'Empório da Barba - Graças',
-    image: 'https://lh3.googleusercontent.com/p/AF1QipNVnBRKQJi_CZuR1cUMev0jMxzZ7DFApLCnGqAd=s1360-w1360-h1020',
+    image: 'https://images.unsplash.com/photo-1585747860019-8e79b4b23e60?w=400&h=300&fit=crop',
     rating: 4.9,
     reviewsCount: 312,
     address: 'Av. Conselheiro Rosa e Silva, 670 - Graças, Recife',
@@ -29,7 +29,7 @@ export const barbershops: Barbershop[] = [
   {
     id: '2',
     name: 'Barbearia Savoie',
-    image: 'https://d2zdpiztbgorvt.cloudfront.net/region1/br/193934/biz_photo/8db25b8ed2b0475599d12a4888f135-barbearia-savoie-biz-photo-903cffb97d8f44619d0dffc11d2827-booksy.jpeg',
+    image: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&h=300&fit=crop',
     rating: 4.9,
     reviewsCount: 278,
     address: 'Av. Eng. Domingos Ferreira, 1970 - Boa Viagem, Recife',
@@ -52,7 +52,7 @@ export const barbershops: Barbershop[] = [
   {
     id: '3',
     name: 'Alberis Barbearia',
-    image: 'https://d2zdpiztbgorvt.cloudfront.net/region1/br/193934/biz_photo/a9c574711c5a425aa4918ae9f34db8-barbearia-savoie-biz-photo-7641a29e1be349518917bdd799164b-booksy.jpeg',
+    image: 'https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=400&h=300&fit=crop',
     rating: 4.9,
     reviewsCount: 245,
     address: 'Av. Conselheiro Aguiar, 3735 - Boa Viagem, Recife',
@@ -75,7 +75,7 @@ export const barbershops: Barbershop[] = [
   {
     id: '4',
     name: 'Barbearia Meu Chefe',
-    image: 'https://baffibarbearia.com.br/wp-content/uploads/2025/06/Adulto-3-1.jpg',
+    image: 'https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=400&h=300&fit=crop',
     rating: 4.9,
     reviewsCount: 389,
     address: 'R. Ana Neri, 6 - Torre, Recife',
@@ -98,7 +98,7 @@ export const barbershops: Barbershop[] = [
   {
     id: '5',
     name: 'Baffi Barbearia',
-    image: 'https://baffibarbearia.com.br/wp-content/uploads/2025/06/BaffiVerde-1024x724.jpeg',
+    image: 'https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=400&h=300&fit=crop',
     rating: 4.8,
     reviewsCount: 356,
     address: 'R. João Tude de Melo, 77 - Parnamirim, Recife',
@@ -123,7 +123,7 @@ export const barbershops: Barbershop[] = [
   {
     id: '6',
     name: 'Confraria da Barba - Graças',
-    image: 'https://d2zdpiztbgorvt.cloudfront.net/region1/br/193934/biz_photo/92090f33bb0549128db6b943aa557c-barbearia-savoie-biz-photo-2265c57532aa41cda82fc3aa460ac3-booksy.jpeg',
+    image: 'https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=400&h=300&fit=crop',
     rating: 4.8,
     reviewsCount: 198,
     address: 'R. do Cupim, 53 - Graças, Recife',
@@ -146,7 +146,7 @@ export const barbershops: Barbershop[] = [
   {
     id: '7',
     name: 'Trois Barbearia',
-    image: 'https://d2zdpiztbgorvt.cloudfront.net/region1/br/193934/inspiration/f3bd6a57791847178e3f50762a8834-barbearia-savoie-inspiration-be4d61ea68d148399fa02e1a4fa1e5-booksy.jpeg',
+    image: 'https://images.unsplash.com/photo-1493256338651-d82f7acb2b38?w=400&h=300&fit=crop',
     rating: 4.7,
     reviewsCount: 267,
     address: 'R. Padre Carapuceiro, 777 - Boa Viagem, Recife',
@@ -169,7 +169,7 @@ export const barbershops: Barbershop[] = [
   {
     id: '8',
     name: 'Confraria da Barba - Boa Viagem',
-    image: 'https://d2zdpiztbgorvt.cloudfront.net/region1/br/193934/inspiration/0ac23d9196cf4fa5b1678c26986b35-barbearia-savoie-inspiration-47aba8f9dc204c1189dda8b58c906f-booksy.jpeg',
+    image: 'https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?w=400&h=300&fit=crop',
     rating: 4.8,
     reviewsCount: 215,
     address: 'Av. Eng. Domingos Ferreira, 861 - Boa Viagem, Recife',
@@ -192,7 +192,7 @@ export const barbershops: Barbershop[] = [
   {
     id: '9',
     name: 'Binha Barber Shop',
-    image: 'https://baffibarbearia.com.br/wp-content/uploads/2025/06/Baffi-Adulto-1-2.jpg',
+    image: 'https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?w=400&h=300&fit=crop',
     rating: 4.8,
     reviewsCount: 178,
     address: 'R. João Cardoso Aires, 875 - Boa Viagem, Recife',
@@ -215,7 +215,7 @@ export const barbershops: Barbershop[] = [
   {
     id: '10',
     name: 'Barbearia Recife',
-    image: 'https://d2zdpiztbgorvt.cloudfront.net/region1/br/193934/inspiration/e7d606c2efbc4a898a26dba059c3e4-barbearia-savoie-inspiration-688ddf9986a14eadb29bb2f943e51c-booksy.jpeg',
+    image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&h=300&fit=crop',
     rating: 4.8,
     reviewsCount: 203,
     address: 'R. Dr. Arthur Gonçalves, 142 - Madalena, Recife',
@@ -238,7 +238,7 @@ export const barbershops: Barbershop[] = [
   {
     id: '11',
     name: 'Empório da Barba - Boa Viagem',
-    image: 'https://d2zdpiztbgorvt.cloudfront.net/region1/br/193934/biz_photo/1c1d57646b274970b587defaeac35a-barbearia-savoie-biz-photo-dbd50f8c903a4305b536b683415276-booksy.jpeg',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop',
     rating: 4.8,
     reviewsCount: 298,
     address: 'Av. Conselheiro Aguiar, 3524 - Boa Viagem, Recife',
@@ -263,7 +263,7 @@ export const barbershops: Barbershop[] = [
   {
     id: '12',
     name: 'Santé Barbearia Premium',
-    image: 'https://d2zdpiztbgorvt.cloudfront.net/region1/br/193934/inspiration/5a0c43bfa6884ee28909b54b57a658-barbearia-savoie-inspiration-dc3146b129584004bee3d12a697d56-booksy.jpeg',
+    image: 'https://images.unsplash.com/photo-1596362601603-af68e2811590?w=400&h=300&fit=crop',
     rating: 4.7,
     reviewsCount: 189,
     address: 'Av. Gov. Agamenon Magalhães, 4000 - Ilha do Leite, Recife',
