@@ -20,12 +20,12 @@ import { WebContainer } from '../components/WebContainer';
 type Nav = NativeStackNavigationProp<HomeStackParamList>;
 
 const popularServices = [
-  { icon: 'cut-outline', label: 'Corte' },
-  { icon: 'happy-outline', label: 'Barba' },
-  { icon: 'star-outline', label: 'Combo' },
-  { icon: 'color-palette-outline', label: 'Pigmentação' },
-  { icon: 'water-outline', label: 'Hidratação' },
-  { icon: 'sunny-outline', label: 'Luzes' },
+  { icon: 'cut', label: 'Corte', desc: 'Degradê, social, moderno', avg: 'R$ 45', color: '#D4A853' },
+  { icon: 'happy', label: 'Barba', desc: 'Navalhada, design, completa', avg: 'R$ 35', color: '#4CAF50' },
+  { icon: 'star', label: 'Combo', desc: 'Corte + barba + extras', avg: 'R$ 80', color: '#2196F3' },
+  { icon: 'color-palette', label: 'Pigmentação', desc: 'Coloração capilar', avg: 'R$ 90', color: '#9C27B0' },
+  { icon: 'water', label: 'Hidratação', desc: 'Tratamento profundo', avg: 'R$ 50', color: '#00BCD4' },
+  { icon: 'sunny', label: 'Luzes', desc: 'Mechas e reflexos', avg: 'R$ 120', color: '#FF9800' },
 ];
 
 export function HomeScreen() {
@@ -79,16 +79,23 @@ export function HomeScreen() {
 
       <View style={styles.section}>
         <SectionHeader title="Serviços Populares" />
-        <View style={styles.servicesGrid}>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           {popularServices.map((svc) => (
-            <TouchableOpacity key={svc.label} style={styles.serviceItem} activeOpacity={0.7}>
-              <View style={styles.serviceIcon}>
-                <Ionicons name={svc.icon as any} size={26} color={colors.primary} />
+            <TouchableOpacity key={svc.label} style={styles.serviceCard} activeOpacity={0.7}>
+              <View style={[styles.serviceIconWrap, { backgroundColor: svc.color + '20' }]}>
+                <Ionicons name={svc.icon as any} size={28} color={svc.color} />
               </View>
-              <Text style={styles.serviceLabel}>{svc.label}</Text>
+              <View style={styles.serviceInfo}>
+                <Text style={styles.serviceLabel}>{svc.label}</Text>
+                <Text style={styles.serviceDesc} numberOfLines={1}>{svc.desc}</Text>
+              </View>
+              <View style={styles.serviceAvgContainer}>
+                <Text style={styles.serviceAvgLabel}>a partir de</Text>
+                <Text style={styles.serviceAvg}>{svc.avg}</Text>
+              </View>
             </TouchableOpacity>
           ))}
-        </View>
+        </ScrollView>
       </View>
 
       <View style={styles.section}>
@@ -135,15 +142,33 @@ function NearbyCard({ shop, distance, onPress }: { shop: Barbershop; distance: s
   return (
     <TouchableOpacity style={styles.nearbyCard} onPress={onPress} activeOpacity={0.8}>
       <Image source={{ uri: shop.image }} style={styles.nearbyImage} />
+      <View style={styles.nearbyOverlay}>
+        <View style={[styles.nearbyBadge, shop.isOpen ? styles.nearbyOpen : styles.nearbyClosed]}>
+          <View style={[styles.nearbyDot, { backgroundColor: shop.isOpen ? colors.success : colors.error }]} />
+          <Text style={[styles.nearbyBadgeText, { color: shop.isOpen ? colors.success : colors.error }]}>
+            {shop.isOpen ? 'Aberto' : 'Fechado'}
+          </Text>
+        </View>
+      </View>
       <View style={styles.nearbyContent}>
         <Text style={styles.nearbyName} numberOfLines={1}>{shop.name}</Text>
-        <RatingStars rating={shop.rating} size={11} />
-        {distance && (
-          <View style={styles.nearbyDistance}>
-            <Ionicons name="navigate-outline" size={11} color={colors.primary} />
-            <Text style={styles.nearbyDistText}>{distance}</Text>
-          </View>
-        )}
+        <View style={styles.nearbyRatingRow}>
+          <RatingStars rating={shop.rating} size={11} />
+          <Text style={styles.nearbyReviews}>({shop.reviewsCount})</Text>
+        </View>
+        <View style={styles.nearbyAddressRow}>
+          <Ionicons name="location-outline" size={11} color={colors.textMuted} />
+          <Text style={styles.nearbyAddress} numberOfLines={1}>{shop.address.split(' - ')[0]}</Text>
+        </View>
+        <View style={styles.nearbyFooter}>
+          <Text style={styles.nearbyPrice}>{shop.priceRange}</Text>
+          {distance && (
+            <View style={styles.nearbyDistance}>
+              <Ionicons name="navigate-outline" size={11} color={colors.primary} />
+              <Text style={styles.nearbyDistText}>{distance}</Text>
+            </View>
+          )}
+        </View>
       </View>
     </TouchableOpacity>
   );
@@ -186,29 +211,57 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.xl,
     marginTop: spacing.xl,
   },
-  servicesGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
+  serviceCard: {
+    width: 200,
+    backgroundColor: colors.surface,
+    borderRadius: borderRadius.md,
+    padding: spacing.lg,
+    marginRight: spacing.md,
+    borderWidth: 1,
+    borderColor: colors.border,
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
   },
-  serviceItem: {
-    width: '30%',
-    alignItems: 'center',
-    marginBottom: spacing.lg,
-  },
-  serviceIcon: {
-    width: 56,
-    height: 56,
-    borderRadius: 28,
-    backgroundColor: 'rgba(212, 168, 83, 0.12)',
+  serviceIconWrap: {
+    width: 52,
+    height: 52,
+    borderRadius: borderRadius.md,
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: spacing.sm,
+    marginBottom: spacing.md,
+  },
+  serviceInfo: {
+    marginBottom: spacing.md,
   },
   serviceLabel: {
+    fontSize: 16,
+    color: colors.textPrimary,
+    fontWeight: '700',
+  },
+  serviceDesc: {
     fontSize: 12,
-    color: colors.textSecondary,
-    fontWeight: '500',
+    color: colors.textMuted,
+    marginTop: 3,
+  },
+  serviceAvgContainer: {
+    borderTopWidth: 1,
+    borderTopColor: colors.border,
+    paddingTop: spacing.sm,
+  },
+  serviceAvgLabel: {
+    fontSize: 10,
+    color: colors.textMuted,
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+  },
+  serviceAvg: {
+    fontSize: 18,
+    color: colors.primary,
+    fontWeight: '800',
+    marginTop: 2,
   },
   loadingText: {
     color: colors.textMuted,
@@ -217,32 +270,95 @@ const styles = StyleSheet.create({
     paddingVertical: spacing.xl,
   },
   nearbyCard: {
-    width: 160,
+    width: 180,
     backgroundColor: colors.surface,
     borderRadius: borderRadius.md,
     overflow: 'hidden',
     marginRight: spacing.md,
     borderWidth: 1,
     borderColor: colors.border,
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
   },
   nearbyImage: {
     width: '100%',
-    height: 100,
+    height: 110,
+  },
+  nearbyOverlay: {
+    position: 'absolute',
+    top: spacing.sm,
+    right: spacing.sm,
+  },
+  nearbyBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    backgroundColor: 'rgba(0,0,0,0.6)',
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: borderRadius.full,
+  },
+  nearbyOpen: {},
+  nearbyClosed: {},
+  nearbyDot: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+  },
+  nearbyBadgeText: {
+    fontSize: 10,
+    fontWeight: '600',
   },
   nearbyContent: {
-    padding: spacing.sm,
+    padding: spacing.md,
   },
   nearbyName: {
-    fontSize: 13,
-    fontWeight: '600',
+    fontSize: 14,
+    fontWeight: '700',
     color: colors.textPrimary,
     marginBottom: 4,
+  },
+  nearbyRatingRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+  },
+  nearbyReviews: {
+    fontSize: 10,
+    color: colors.textMuted,
+  },
+  nearbyAddressRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 3,
+    marginTop: 6,
+  },
+  nearbyAddress: {
+    fontSize: 11,
+    color: colors.textMuted,
+    flex: 1,
+  },
+  nearbyFooter: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 8,
+    paddingTop: 8,
+    borderTopWidth: 1,
+    borderTopColor: colors.border,
+  },
+  nearbyPrice: {
+    fontSize: 14,
+    color: colors.primary,
+    fontWeight: '700',
   },
   nearbyDistance: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 3,
-    marginTop: 4,
   },
   nearbyDistText: {
     fontSize: 11,
