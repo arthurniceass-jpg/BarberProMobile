@@ -20,12 +20,12 @@ import { WebContainer } from '../components/WebContainer';
 type Nav = NativeStackNavigationProp<HomeStackParamList>;
 
 const popularServices = [
-  { emoji: '✂️', label: 'Corte', desc: 'Degradê, social, moderno', avg: 'R$ 45', color: '#D4A853' },
-  { emoji: '🧔', label: 'Barba', desc: 'Navalhada, design, completa', avg: 'R$ 35', color: '#4CAF50' },
-  { emoji: '⭐', label: 'Combo', desc: 'Corte + barba + extras', avg: 'R$ 80', color: '#2196F3' },
-  { emoji: '🎨', label: 'Pigmentação', desc: 'Coloração capilar', avg: 'R$ 90', color: '#9C27B0' },
-  { emoji: '💧', label: 'Hidratação', desc: 'Tratamento profundo', avg: 'R$ 50', color: '#00BCD4' },
-  { emoji: '✨', label: 'Luzes', desc: 'Mechas e reflexos', avg: 'R$ 120', color: '#FF9800' },
+  { label: 'Corte', desc: 'Degradê, social, moderno', avg: 'R$ 45', initial: 'C', color: '#D4A853' },
+  { label: 'Barba', desc: 'Navalhada, design, completa', avg: 'R$ 35', initial: 'B', color: '#4CAF50' },
+  { label: 'Combo', desc: 'Corte + barba + extras', avg: 'R$ 80', initial: 'CB', color: '#2196F3' },
+  { label: 'Pigmentação', desc: 'Coloração capilar', avg: 'R$ 90', initial: 'P', color: '#9C27B0' },
+  { label: 'Hidratação', desc: 'Tratamento profundo', avg: 'R$ 50', initial: 'H', color: '#00BCD4' },
+  { label: 'Luzes', desc: 'Mechas e reflexos', avg: 'R$ 120', initial: 'L', color: '#FF9800' },
 ];
 
 export function HomeScreen() {
@@ -71,13 +71,13 @@ export function HomeScreen() {
             <Text style={styles.subtitle}>Encontre a barbearia perfeita</Text>
           </View>
           <View style={styles.avatarPlaceholder}>
-            <Text style={{ fontSize: 22 }}>👤</Text>
+            <Ionicons name="person-outline" size={22} color={colors.primary} />
           </View>
         </View>
 
         {/* Location indicator */}
         <View style={styles.locationBar}>
-          <Text style={{ fontSize: 14 }}>📍</Text>
+          <Ionicons name="location" size={14} color={colors.primary} />
           <Text style={styles.locationText}>
             {location.loading
               ? 'Obtendo localização...'
@@ -106,7 +106,9 @@ export function HomeScreen() {
               <Text style={styles.bannerButtonText}>Agendar agora</Text>
             </TouchableOpacity>
           </View>
-          <Text style={styles.bannerEmoji}>💈</Text>
+          <View style={styles.bannerIconWrap}>
+            <Ionicons name="cut" size={48} color={colors.primary} />
+          </View>
         </View>
       </View>
 
@@ -117,7 +119,7 @@ export function HomeScreen() {
           {popularServices.map((svc) => (
             <TouchableOpacity key={svc.label} style={styles.serviceCard} activeOpacity={0.7}>
               <View style={[styles.serviceIconWrap, { backgroundColor: svc.color + '20' }]}>
-                <Text style={styles.serviceEmoji}>{svc.emoji}</Text>
+                <Text style={[styles.serviceInitial, { color: svc.color }]}>{svc.initial}</Text>
               </View>
               <Text style={styles.serviceLabel}>{svc.label}</Text>
               <Text style={styles.serviceDesc} numberOfLines={2}>{svc.desc}</Text>
@@ -159,7 +161,7 @@ export function HomeScreen() {
         />
         {location.loading ? (
           <View style={styles.loadingContainer}>
-            <Text style={{ fontSize: 24 }}>📍</Text>
+            <Ionicons name="location-outline" size={24} color={colors.primary} />
             <Text style={styles.loadingText}>Obtendo sua localização...</Text>
           </View>
         ) : (
@@ -223,7 +225,7 @@ function ShopCard({ shop, distance, onPress }: { shop: Barbershop; distance: str
           <Text style={styles.shopReviews}>({shop.reviewsCount})</Text>
         </View>
         <View style={styles.shopAddressRow}>
-          <Text style={{ fontSize: 10 }}>📍</Text>
+          <Ionicons name="location-outline" size={10} color={colors.textMuted} />
           <Text style={styles.shopAddress} numberOfLines={1}>
             {shop.address.split(' - ')[0]}
           </Text>
@@ -342,8 +344,13 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: colors.background,
   },
-  bannerEmoji: {
-    fontSize: 64,
+  bannerIconWrap: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    backgroundColor: 'rgba(212, 168, 83, 0.15)',
+    justifyContent: 'center',
+    alignItems: 'center',
     marginLeft: spacing.md,
   },
 
@@ -365,8 +372,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: spacing.md,
   },
-  serviceEmoji: {
-    fontSize: 24,
+  serviceInitial: {
+    fontSize: 20,
+    fontWeight: '800',
   },
   serviceLabel: {
     fontSize: 15,
