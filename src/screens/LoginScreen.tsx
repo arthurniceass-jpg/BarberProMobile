@@ -3,7 +3,7 @@ import {
   View, Text, TextInput, TouchableOpacity, StyleSheet, KeyboardAvoidingView,
   Platform, ScrollView, Image,
 } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { Icon } from '../components/Icon';
 import { colors } from '../theme/colors';
 import { spacing, borderRadius } from '../theme/spacing';
 
@@ -34,7 +34,7 @@ export function LoginScreen({ onLogin }: LoginScreenProps) {
       >
         <View style={styles.logoSection}>
           <View style={styles.logoContainer}>
-            <Ionicons name="cut" size={48} color={colors.background} />
+            <Icon name="cut" size={48} color={colors.background} />
           </View>
           <Text style={styles.appName}>BarberPro</Text>
           <Text style={styles.tagline}>Seu estilo, nossa prioridade</Text>
@@ -54,7 +54,7 @@ export function LoginScreen({ onLogin }: LoginScreenProps) {
             <View style={styles.inputGroup}>
               <Text style={styles.inputLabel}>Nome completo</Text>
               <View style={styles.inputContainer}>
-                <Ionicons name="person-outline" size={20} color={colors.textMuted} />
+                <Icon name="person-outline" size={20} color={colors.textMuted} />
                 <TextInput
                   style={styles.input}
                   value={name}
@@ -70,7 +70,7 @@ export function LoginScreen({ onLogin }: LoginScreenProps) {
           <View style={styles.inputGroup}>
             <Text style={styles.inputLabel}>Email</Text>
             <View style={styles.inputContainer}>
-              <Ionicons name="mail-outline" size={20} color={colors.textMuted} />
+              <Icon name="mail-outline" size={20} color={colors.textMuted} />
               <TextInput
                 style={styles.input}
                 value={email}
@@ -86,7 +86,7 @@ export function LoginScreen({ onLogin }: LoginScreenProps) {
           <View style={styles.inputGroup}>
             <Text style={styles.inputLabel}>Senha</Text>
             <View style={styles.inputContainer}>
-              <Ionicons name="lock-closed-outline" size={20} color={colors.textMuted} />
+              <Icon name="lock-closed-outline" size={20} color={colors.textMuted} />
               <TextInput
                 style={styles.input}
                 value={password}
@@ -96,7 +96,7 @@ export function LoginScreen({ onLogin }: LoginScreenProps) {
                 secureTextEntry={!showPassword}
               />
               <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
-                <Ionicons
+                <Icon
                   name={showPassword ? 'eye-off-outline' : 'eye-outline'}
                   size={20}
                   color={colors.textMuted}
@@ -115,7 +115,7 @@ export function LoginScreen({ onLogin }: LoginScreenProps) {
             <Text style={styles.primaryButtonText}>
               {isSignUp ? 'Cadastrar' : 'Entrar'}
             </Text>
-            <Ionicons name="arrow-forward" size={20} color={colors.background} />
+            <Icon name="arrow-forward" size={20} color={colors.background} />
           </TouchableOpacity>
 
           <View style={styles.dividerRow}>
@@ -126,13 +126,13 @@ export function LoginScreen({ onLogin }: LoginScreenProps) {
 
           <View style={styles.socialRow}>
             <TouchableOpacity style={styles.socialButton} activeOpacity={0.7}>
-              <Ionicons name="logo-google" size={22} color={colors.textPrimary} />
+              <Icon name="logo-google" size={22} color={colors.textPrimary} />
             </TouchableOpacity>
             <TouchableOpacity style={styles.socialButton} activeOpacity={0.7}>
-              <Ionicons name="logo-apple" size={22} color={colors.textPrimary} />
+              <Icon name="logo-apple" size={22} color={colors.textPrimary} />
             </TouchableOpacity>
             <TouchableOpacity style={styles.socialButton} activeOpacity={0.7}>
-              <Ionicons name="logo-facebook" size={22} color="#1877F2" />
+              <Icon name="logo-facebook" size={22} color="#1877F2" />
             </TouchableOpacity>
           </View>
 
