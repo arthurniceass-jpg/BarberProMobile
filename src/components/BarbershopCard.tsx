@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { Icon } from './Icon';
 import { colors } from '../theme/colors';
 import { borderRadius, spacing } from '../theme/spacing';
 import { RatingStars } from './RatingStars';
@@ -22,7 +22,7 @@ export const BarbershopCard = memo(({ shop, distance, onPress }: BarbershopCardP
       </View>
       <RatingStars rating={shop.rating} size={12} />
       <View style={styles.info}>
-        <Ionicons name="location-outline" size={14} color={colors.textMuted} />
+        <Icon name="location-outline" size={14} color={colors.textMuted} />
         <Text style={styles.address} numberOfLines={1}>{shop.address}</Text>
       </View>
       <View style={styles.footer}>
@@ -33,7 +33,7 @@ export const BarbershopCard = memo(({ shop, distance, onPress }: BarbershopCardP
         </View>
         {distance && (
           <View style={styles.distanceContainer}>
-            <Ionicons name="navigate-outline" size={12} color={colors.primary} />
+            <Icon name="navigate-outline" size={12} color={colors.primary} />
             <Text style={styles.distance}>{distance}</Text>
           </View>
         )}

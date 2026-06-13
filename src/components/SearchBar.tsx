@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
-import { View, TextInput, StyleSheet } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { View, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { Icon } from './Icon';
 import { colors } from '../theme/colors';
 import { borderRadius, spacing } from '../theme/spacing';
 
@@ -12,7 +12,7 @@ interface SearchBarProps {
 
 export const SearchBar = memo(({ value, onChangeText, placeholder = 'Buscar barbearia...' }: SearchBarProps) => (
   <View style={styles.container}>
-    <Ionicons name="search-outline" size={20} color={colors.textMuted} />
+    <Icon name="search-outline" size={20} color={colors.textMuted} />
     <TextInput
       style={styles.input}
       value={value}
@@ -21,7 +21,9 @@ export const SearchBar = memo(({ value, onChangeText, placeholder = 'Buscar barb
       placeholderTextColor={colors.textMuted}
     />
     {value.length > 0 && (
-      <Ionicons name="close-circle" size={20} color={colors.textMuted} onPress={() => onChangeText('')} />
+      <TouchableOpacity onPress={() => onChangeText('')}>
+        <Icon name="close-circle" size={20} color={colors.textMuted} />
+      </TouchableOpacity>
     )}
   </View>
 ));

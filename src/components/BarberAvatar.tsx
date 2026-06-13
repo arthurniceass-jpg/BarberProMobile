@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { Icon } from './Icon';
 import { colors } from '../theme/colors';
 import { borderRadius, spacing } from '../theme/spacing';
 import { Barber } from '../types';
@@ -23,7 +23,7 @@ export const BarberAvatar = memo(({ barber, size = 70, selected = false, onPress
     </View>
     <Text style={styles.name} numberOfLines={1}>{barber.name.split(' ')[0]}</Text>
     <View style={styles.ratingRow}>
-      <Ionicons name="star" size={10} color={colors.star} />
+      <Icon name="star" size={10} color={colors.star} />
       <Text style={styles.rating}>{barber.rating.toFixed(1)}</Text>
     </View>
   </TouchableOpacity>

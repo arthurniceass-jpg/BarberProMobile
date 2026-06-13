@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react';
 import {
   View, Text, ScrollView, TouchableOpacity, Image, StyleSheet, Platform,
 } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { Icon } from '../components/Icon';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { colors } from '../theme/colors';
@@ -71,13 +71,13 @@ export function HomeScreen() {
             <Text style={styles.subtitle}>Encontre a barbearia perfeita</Text>
           </View>
           <View style={styles.avatarPlaceholder}>
-            <Ionicons name="person-outline" size={22} color={colors.primary} />
+            <Icon name="person-outline" size={22} color={colors.primary} />
           </View>
         </View>
 
         {/* Location indicator */}
         <View style={styles.locationBar}>
-          <Ionicons name="location" size={14} color={colors.primary} />
+          <Icon name="location" size={14} color={colors.primary} />
           <Text style={styles.locationText}>
             {location.loading
               ? 'Obtendo localização...'
@@ -107,7 +107,7 @@ export function HomeScreen() {
             </TouchableOpacity>
           </View>
           <View style={styles.bannerIconWrap}>
-            <Ionicons name="cut" size={48} color={colors.primary} />
+            <Icon name="cut" size={48} color={colors.primary} />
           </View>
         </View>
       </View>
@@ -161,7 +161,7 @@ export function HomeScreen() {
         />
         {location.loading ? (
           <View style={styles.loadingContainer}>
-            <Ionicons name="location-outline" size={24} color={colors.primary} />
+            <Icon name="location-outline" size={24} color={colors.primary} />
             <Text style={styles.loadingText}>Obtendo sua localização...</Text>
           </View>
         ) : (
@@ -225,7 +225,7 @@ function ShopCard({ shop, distance, onPress }: { shop: Barbershop; distance: str
           <Text style={styles.shopReviews}>({shop.reviewsCount})</Text>
         </View>
         <View style={styles.shopAddressRow}>
-          <Ionicons name="location-outline" size={10} color={colors.textMuted} />
+          <Icon name="location-outline" size={10} color={colors.textMuted} />
           <Text style={styles.shopAddress} numberOfLines={1}>
             {shop.address.split(' - ')[0]}
           </Text>

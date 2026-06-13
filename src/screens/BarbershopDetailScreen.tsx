@@ -4,7 +4,7 @@ import {
 } from 'react-native';
 import { useRoute, useNavigation, RouteProp } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { Ionicons } from '@expo/vector-icons';
+import { Icon } from '../components/Icon';
 import { colors } from '../theme/colors';
 import { spacing, borderRadius } from '../theme/spacing';
 import { barbershops } from '../data/barbershops';
@@ -44,7 +44,7 @@ export function BarbershopDetailScreen() {
           <Image source={{ uri: shop.image }} style={[styles.heroImage, { width: screenWidth }]} />
           <View style={styles.heroOverlay} />
           <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-            <Ionicons name="arrow-back" size={24} color={colors.textPrimary} />
+            <Icon name="arrow-back" size={24} color={colors.textPrimary} />
           </TouchableOpacity>
         </View>
 
@@ -64,18 +64,18 @@ export function BarbershopDetailScreen() {
           </View>
 
           <View style={styles.detailRow}>
-            <Ionicons name="location-outline" size={18} color={colors.primary} />
+            <Icon name="location-outline" size={18} color={colors.primary} />
             <Text style={styles.detailText}>{shop.address}</Text>
           </View>
           <View style={styles.detailRow}>
-            <Ionicons name="time-outline" size={18} color={colors.primary} />
+            <Icon name="time-outline" size={18} color={colors.primary} />
             <Text style={styles.detailText}>{shop.openHours}</Text>
           </View>
           <TouchableOpacity
             style={styles.detailRow}
             onPress={() => Linking.openURL(`tel:${shop.phone}`)}
           >
-            <Ionicons name="call-outline" size={18} color={colors.primary} />
+            <Icon name="call-outline" size={18} color={colors.primary} />
             <Text style={[styles.detailText, { color: colors.primary }]}>{shop.phone}</Text>
           </TouchableOpacity>
         </View>
@@ -131,7 +131,7 @@ export function BarbershopDetailScreen() {
           activeOpacity={0.8}
         >
           <Text style={styles.bookButtonText}>Agendar</Text>
-          <Ionicons name="arrow-forward" size={20} color={colors.background} />
+          <Icon name="arrow-forward" size={20} color={colors.background} />
         </TouchableOpacity>
       </View>
     </View>

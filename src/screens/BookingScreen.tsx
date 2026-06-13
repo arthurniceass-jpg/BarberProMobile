@@ -3,7 +3,7 @@ import {
   View, Text, ScrollView, TouchableOpacity, StyleSheet,
 } from 'react-native';
 import { useRoute, useNavigation, RouteProp } from '@react-navigation/native';
-import { Ionicons } from '@expo/vector-icons';
+import { Icon } from '../components/Icon';
 import { colors } from '../theme/colors';
 import { spacing, borderRadius } from '../theme/spacing';
 import { barbershops } from '../data/barbershops';
@@ -83,7 +83,7 @@ export function BookingScreen() {
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.content}>
         <View style={styles.serviceInfo}>
           <View style={styles.serviceIconBox}>
-            <Ionicons name={service.icon as any} size={28} color={colors.primary} />
+            <Icon name={service.icon} size={28} color={colors.primary} />
           </View>
           <View style={styles.serviceDetails}>
             <Text style={styles.serviceName}>{service.name}</Text>
@@ -91,7 +91,7 @@ export function BookingScreen() {
             <View style={styles.serviceMetaRow}>
               <Text style={styles.servicePrice}>R$ {service.price.toFixed(2)}</Text>
               <View style={styles.durationRow}>
-                <Ionicons name="time-outline" size={14} color={colors.textMuted} />
+                <Icon name="time-outline" size={14} color={colors.textMuted} />
                 <Text style={styles.durationText}>{service.duration} min</Text>
               </View>
             </View>
@@ -151,7 +151,7 @@ export function BookingScreen() {
           onPress={handleConfirm}
           activeOpacity={0.8}
         >
-          <Ionicons name="calendar-outline" size={20} color={colors.background} />
+          <Icon name="calendar-outline" size={20} color={colors.background} />
           <Text style={styles.confirmButtonText}>Confirmar Agendamento</Text>
         </TouchableOpacity>
       </View>

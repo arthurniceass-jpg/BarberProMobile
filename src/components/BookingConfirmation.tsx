@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Modal, TouchableOpacity, StyleSheet } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { Icon } from './Icon';
 import { colors } from '../theme/colors';
 import { borderRadius, spacing } from '../theme/spacing';
 
@@ -22,7 +22,7 @@ export function BookingConfirmation({
       <View style={styles.overlay}>
         <View style={styles.modal}>
           <View style={styles.iconContainer}>
-            <Ionicons name="checkmark-circle" size={64} color={colors.success} />
+            <Icon name="checkmark-circle" size={64} color={colors.success} />
           </View>
           <Text style={styles.title}>Agendamento Confirmado!</Text>
           <Text style={styles.subtitle}>Seu horário foi reservado com sucesso</Text>
@@ -47,7 +47,7 @@ export function BookingConfirmation({
 function DetailRow({ icon, label, value }: { icon: string; label: string; value: string }) {
   return (
     <View style={styles.row}>
-      <Ionicons name={icon as any} size={18} color={colors.primary} />
+      <Icon name={icon} size={18} color={colors.primary} />
       <Text style={styles.label}>{label}:</Text>
       <Text style={styles.value}>{value}</Text>
     </View>

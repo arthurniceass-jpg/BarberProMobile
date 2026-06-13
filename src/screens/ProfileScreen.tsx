@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {
   View, Text, ScrollView, TouchableOpacity, Image, TextInput, Switch, StyleSheet, Alert,
 } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { Icon } from '../components/Icon';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { colors } from '../theme/colors';
 import { spacing, borderRadius } from '../theme/spacing';
@@ -49,11 +49,11 @@ export function ProfileScreen() {
               <Image source={{ uri: photoUri }} style={styles.avatar} />
             ) : (
               <View style={[styles.avatar, styles.avatarPlaceholder]}>
-                <Ionicons name="camera" size={32} color={colors.primary} />
+                <Icon name="camera" size={32} color={colors.primary} />
               </View>
             )}
             <View style={styles.cameraIcon}>
-              <Ionicons name="camera" size={14} color={colors.background} />
+              <Icon name="camera" size={14} color={colors.background} />
             </View>
           </View>
         </TouchableOpacity>
@@ -65,21 +65,21 @@ export function ProfileScreen() {
         <View style={styles.inputGroup}>
           <Text style={styles.inputLabel}>Nome</Text>
           <View style={styles.inputContainer}>
-            <Ionicons name="person-outline" size={18} color={colors.textMuted} />
+            <Icon name="person-outline" size={18} color={colors.textMuted} />
             <TextInput style={styles.input} value={name} onChangeText={setName} placeholderTextColor={colors.textMuted} />
           </View>
         </View>
         <View style={styles.inputGroup}>
           <Text style={styles.inputLabel}>Email</Text>
           <View style={styles.inputContainer}>
-            <Ionicons name="mail-outline" size={18} color={colors.textMuted} />
+            <Icon name="mail-outline" size={18} color={colors.textMuted} />
             <TextInput style={styles.input} value={email} onChangeText={setEmail} keyboardType="email-address" placeholderTextColor={colors.textMuted} />
           </View>
         </View>
         <View style={styles.inputGroup}>
           <Text style={styles.inputLabel}>Telefone</Text>
           <View style={styles.inputContainer}>
-            <Ionicons name="call-outline" size={18} color={colors.textMuted} />
+            <Icon name="call-outline" size={18} color={colors.textMuted} />
             <TextInput style={styles.input} value={phone} onChangeText={setPhone} keyboardType="phone-pad" placeholderTextColor={colors.textMuted} />
           </View>
         </View>
@@ -103,7 +103,7 @@ export function ProfileScreen() {
         <Text style={styles.sectionTitle}>Configurações</Text>
         <View style={styles.settingRow}>
           <View style={styles.settingLeft}>
-            <Ionicons name="notifications-outline" size={20} color={colors.primary} />
+            <Icon name="notifications-outline" size={20} color={colors.primary} />
             <Text style={styles.settingText}>Notificações</Text>
           </View>
           <Switch
@@ -120,7 +120,7 @@ export function ProfileScreen() {
           style={styles.logoutButton}
           onPress={() => Alert.alert('Logout', 'Funcionalidade demonstrativa')}
         >
-          <Ionicons name="log-out-outline" size={20} color={colors.error} />
+          <Icon name="log-out-outline" size={20} color={colors.error} />
           <Text style={styles.logoutText}>Sair da Conta</Text>
         </TouchableOpacity>
       </View>
@@ -141,9 +141,9 @@ function AppointmentCard({ appointment }: { appointment: Appointment }) {
         <Text style={styles.appointmentShop}>{appointment.shopName}</Text>
         <Text style={styles.appointmentService}>{appointment.serviceName} com {appointment.barberName}</Text>
         <View style={styles.appointmentMeta}>
-          <Ionicons name="calendar-outline" size={12} color={colors.textMuted} />
+          <Icon name="calendar-outline" size={12} color={colors.textMuted} />
           <Text style={styles.appointmentDate}>{appointment.date}</Text>
-          <Ionicons name="time-outline" size={12} color={colors.textMuted} />
+          <Icon name="time-outline" size={12} color={colors.textMuted} />
           <Text style={styles.appointmentDate}>{appointment.time}</Text>
         </View>
       </View>

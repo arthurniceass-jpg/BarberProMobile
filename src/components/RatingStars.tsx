@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { Icon } from './Icon';
 import { colors } from '../theme/colors';
 
 interface RatingStarsProps {
@@ -16,7 +16,7 @@ export const RatingStars = memo(({ rating, size = 14, showNumber = true }: Ratin
   return (
     <View style={styles.container}>
       {Array.from({ length: 5 }, (_, i) => (
-        <Ionicons
+        <Icon
           key={i}
           name={i < fullStars ? 'star' : i === fullStars && hasHalf ? 'star-half' : 'star-outline'}
           size={size}

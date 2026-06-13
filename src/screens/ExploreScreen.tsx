@@ -2,7 +2,7 @@ import React, { useState, useMemo, useCallback } from 'react';
 import { View, Text, FlatList, TouchableOpacity, StyleSheet, RefreshControl } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { Ionicons } from '@expo/vector-icons';
+import { Icon } from '../components/Icon';
 import { colors } from '../theme/colors';
 import { spacing, borderRadius } from '../theme/spacing';
 import { barbershops } from '../data/barbershops';
@@ -91,7 +91,7 @@ export function ExploreScreen() {
             style={[styles.filterChip, sortBy === option && styles.filterChipActive]}
             onPress={() => setSortBy(option)}
           >
-            <Ionicons
+            <Icon
               name={
                 option === 'rating' ? 'star-outline' :
                 option === 'distance' ? 'navigate-outline' : 'pricetag-outline'
@@ -125,7 +125,7 @@ export function ExploreScreen() {
         }
         ListEmptyComponent={
           <View style={styles.empty}>
-            <Ionicons name="search-outline" size={48} color={colors.textMuted} />
+            <Icon name="search-outline" size={48} color={colors.textMuted} />
             <Text style={styles.emptyText}>Nenhuma barbearia encontrada</Text>
           </View>
         }

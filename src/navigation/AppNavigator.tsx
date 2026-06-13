@@ -1,6 +1,6 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Ionicons } from '@expo/vector-icons';
+import { Icon } from '../components/Icon';
 import { HomeStackNavigator } from './HomeStackNavigator';
 import { ExploreStackNavigator } from './ExploreStackNavigator';
 import { ProfileScreen } from '../screens/ProfileScreen';
@@ -28,7 +28,7 @@ export function AppNavigator() {
           fontWeight: '600',
         },
         tabBarIcon: ({ focused, color, size }) => {
-          let iconName: keyof typeof Ionicons.glyphMap;
+          let iconName: string;
           if (route.name === 'HomeTab') {
             iconName = focused ? 'home' : 'home-outline';
           } else if (route.name === 'ExploreTab') {
@@ -36,7 +36,7 @@ export function AppNavigator() {
           } else {
             iconName = focused ? 'person' : 'person-outline';
           }
-          return <Ionicons name={iconName} size={size} color={color} />;
+          return <Icon name={iconName} size={size} color={color} />;
         },
       })}
     >

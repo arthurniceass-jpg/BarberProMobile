@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { Icon } from './Icon';
 import { colors } from '../theme/colors';
 import { borderRadius, spacing } from '../theme/spacing';
 import { Service } from '../types';
@@ -18,7 +18,7 @@ export const ServiceCard = memo(({ service, selected = false, onPress }: Service
     activeOpacity={0.7}
   >
     <View style={[styles.iconContainer, selected && styles.selectedIcon]}>
-      <Ionicons name={service.icon as any} size={24} color={selected ? colors.background : colors.primary} />
+      <Icon name={service.icon} size={24} color={selected ? colors.background : colors.primary} />
     </View>
     <View style={styles.content}>
       <Text style={styles.name}>{service.name}</Text>
@@ -26,7 +26,7 @@ export const ServiceCard = memo(({ service, selected = false, onPress }: Service
       <View style={styles.footer}>
         <Text style={styles.price}>R$ {service.price.toFixed(2)}</Text>
         <View style={styles.duration}>
-          <Ionicons name="time-outline" size={12} color={colors.textMuted} />
+          <Icon name="time-outline" size={12} color={colors.textMuted} />
           <Text style={styles.durationText}>{service.duration} min</Text>
         </View>
       </View>
