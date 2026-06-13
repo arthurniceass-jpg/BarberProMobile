@@ -10,6 +10,7 @@ import { barbershops } from '../data/barbershops';
 import { BarberAvatar } from '../components/BarberAvatar';
 import { BookingConfirmation } from '../components/BookingConfirmation';
 import { HomeStackParamList } from '../navigation/types';
+import { WebContainer } from '../components/WebContainer';
 
 type RouteType = RouteProp<HomeStackParamList, 'Booking'>;
 
@@ -77,6 +78,7 @@ export function BookingScreen() {
   const dateLabel = days.find((d) => d.date === selectedDate);
 
   return (
+    <WebContainer>
     <View style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.content}>
         <View style={styles.serviceInfo}>
@@ -164,6 +166,7 @@ export function BookingScreen() {
         onClose={handleCloseConfirmation}
       />
     </View>
+    </WebContainer>
   );
 }
 

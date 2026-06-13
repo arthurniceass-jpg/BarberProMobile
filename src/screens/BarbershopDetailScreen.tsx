@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import {
-  View, Text, ScrollView, Image, TouchableOpacity, StyleSheet, Dimensions, Linking,
+  View, Text, ScrollView, Image, TouchableOpacity, StyleSheet, useWindowDimensions, Linking, Platform,
 } from 'react-native';
 import { useRoute, useNavigation, RouteProp } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -12,8 +12,7 @@ import { RatingStars } from '../components/RatingStars';
 import { ServiceCard } from '../components/ServiceCard';
 import { BarberAvatar } from '../components/BarberAvatar';
 import { HomeStackParamList } from '../navigation/types';
-
-const { width: SCREEN_WIDTH } = Dimensions.get('window');
+import { WebContainer } from '../components/WebContainer';
 
 type RouteType = RouteProp<HomeStackParamList, 'BarbershopDetail'>;
 type Nav = NativeStackNavigationProp<HomeStackParamList>;
@@ -21,6 +20,7 @@ type Nav = NativeStackNavigationProp<HomeStackParamList>;
 export function BarbershopDetailScreen() {
   const route = useRoute<RouteType>();
   const navigation = useNavigation<Nav>();
+  const { width: screenWidth } = useWindowDimensions();
   const [selectedService, setSelectedService] = useState<string | null>(null);
 
   const shop = useMemo(
@@ -37,10 +37,11 @@ export function BarbershopDetailScreen() {
   }
 
   return (
+    <WebContainer>
     <View style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.heroContainer}>
-          <Image source={{ uri: shop.image }} style={styles.heroImage} />
+          <Image source={{ uri: shop.image }} style={[styles.heroImage, { width: screenWidth }]} />
           <View style={styles.heroOverlay} />
           <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
             <Ionicons name="arrow-back" size={24} color={colors.textPrimary} />
@@ -134,6 +135,7 @@ export function BarbershopDetailScreen() {
         </TouchableOpacity>
       </View>
     </View>
+    </WebContainer>
   );
 }
 
@@ -154,7 +156,7 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   heroImage: {
-    width: SCREEN_WIDTH,
+    width: '100%',
     height: 220,
   },
   heroOverlay: {

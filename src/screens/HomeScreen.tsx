@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import {
-  View, Text, ScrollView, TouchableOpacity, Image, StyleSheet, StatusBar,
+  View, Text, ScrollView, TouchableOpacity, Image, StyleSheet, Platform,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
@@ -15,6 +15,7 @@ import { SectionHeader } from '../components/SectionHeader';
 import { RatingStars } from '../components/RatingStars';
 import { HomeStackParamList } from '../navigation/types';
 import { Barbershop } from '../types';
+import { WebContainer } from '../components/WebContainer';
 
 type Nav = NativeStackNavigationProp<HomeStackParamList>;
 
@@ -60,8 +61,8 @@ export function HomeScreen() {
   };
 
   return (
+    <WebContainer>
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      <StatusBar barStyle="light-content" backgroundColor={colors.background} />
       <View style={styles.headerSection}>
         <View>
           <Text style={styles.greeting}>Olá! 👋</Text>
@@ -126,6 +127,7 @@ export function HomeScreen() {
         </ScrollView>
       </View>
     </ScrollView>
+    </WebContainer>
   );
 }
 

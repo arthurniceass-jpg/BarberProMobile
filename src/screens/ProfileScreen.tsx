@@ -8,6 +8,7 @@ import { colors } from '../theme/colors';
 import { spacing, borderRadius } from '../theme/spacing';
 import { useCamera } from '../hooks/useCamera';
 import { Appointment } from '../types';
+import { WebContainer } from '../components/WebContainer';
 
 const mockAppointments: Appointment[] = [
   { id: 'a1', shopId: '1', shopName: 'Barbearia Premium', serviceName: 'Corte Executivo', barberName: 'Carlos Silva', date: '2026-06-15', time: '10:00', status: 'upcoming' },
@@ -39,6 +40,7 @@ export function ProfileScreen() {
   const pastAppointments = mockAppointments.filter((a) => a.status === 'completed');
 
   return (
+    <WebContainer>
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <View style={styles.profileHeader}>
         <TouchableOpacity onPress={pickImage} activeOpacity={0.7}>
@@ -126,6 +128,7 @@ export function ProfileScreen() {
       <Text style={styles.version}>BarberPro Mobile v1.0.0</Text>
       <View style={{ height: spacing.xxxl }} />
     </ScrollView>
+    </WebContainer>
   );
 }
 

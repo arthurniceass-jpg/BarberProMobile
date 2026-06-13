@@ -12,6 +12,7 @@ import { SearchBar } from '../components/SearchBar';
 import { BarbershopCard } from '../components/BarbershopCard';
 import { ExploreStackParamList } from '../navigation/types';
 import { Barbershop } from '../types';
+import { WebContainer } from '../components/WebContainer';
 
 type Nav = NativeStackNavigationProp<ExploreStackParamList>;
 
@@ -72,6 +73,7 @@ export function ExploreScreen() {
   const keyExtractor = useCallback((item: Barbershop) => item.id, []);
 
   return (
+    <WebContainer>
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>Explorar</Text>
@@ -129,6 +131,7 @@ export function ExploreScreen() {
         }
       />
     </View>
+    </WebContainer>
   );
 }
 
